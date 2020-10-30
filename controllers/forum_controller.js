@@ -24,7 +24,7 @@ router.post('/', (req, res) =>{
 router.get('/:id/edit', (req, res)=>{
     Movie.findById(req.params.id, (err, foundMovie)=>{
         res.render('moviechat/edit.ejs', {
-            movie:foundMovie
+            movie:foundMovie,
         })
     })
 })
