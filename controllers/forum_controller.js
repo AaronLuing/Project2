@@ -44,5 +44,12 @@ router.get('/:id', (req, res)=>{
     })
 })
 
+// DELETE
+router.delete('/:id', (req, res)=>{
+    Movie.findByIdAndDelete(req.params.id, { useFindAndModify: false }, (err, data)=>{
+        res.redirect('/')
+    })
+})
+
 
 module.exports = router;
