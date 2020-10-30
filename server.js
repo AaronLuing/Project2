@@ -4,8 +4,6 @@ const methodOverride  = require('method-override');
 const mongoose = require ('mongoose');
 const app = express ();
 const db = mongoose.connection;
-const forumController = require('./controllers/forum_controller.js');
-app.use(forumController)
 // PORT
 // Allow use of Heroku's port or your own local port, depending on the environment
 const PORT = process.env.PORT || 3000;
@@ -34,10 +32,11 @@ app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 
 
 
-//___________________
-// Routes
-//___________________
-//localhost:3000
+// CONTROLLERS
+const forumController = require('./controllers/forum_controller.js');
+app.use(forumController)
+
+// ROUTES
 app.use('/', forumController)
 
 //___________________

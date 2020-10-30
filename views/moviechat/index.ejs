@@ -7,5 +7,15 @@
 </head>
 <body>
     <h1>Welcome to MovieChat</h1>
+    <a href="/show">Click Here for Movies</a>
+    <a href="/new">Add a Movie</a>
+    <div>
+        <% for(let i=0; i<movies.length; i++){ %>
+            <div>
+                <h4><%= movies[i].name %> </h4><br>
+                <a href="/<%= movies[i].id %>"><img src="<%= movies[i].poster %>"></a>
+            </div>
+        <% } %>
+    </div>
 </body>
 </html>
