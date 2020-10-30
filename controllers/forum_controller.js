@@ -1,6 +1,26 @@
 const express = require('express');
 const router = express.Router();
+const axios = require('axios').default;
 const Movie = require('../models/movie.js')
+require('dotenv').config()
+
+t=req.query.title
+
+// SEARCH
+router.get('/search', (req, res)=>{
+    axios.get(`http://www.omdbapi.com/?apikey=${process.env.OMDBAPIKEY}&t=godzilla`)
+    .then(function (response) {
+        // handle success
+        console.log(response);
+    })
+    .catch(function (error) {
+        // handle error
+        console.log(error);
+    })
+    .then(function () {
+        // always executed
+    });
+})
 
 // INDEX
 router.get('/', (req, res)=>{
