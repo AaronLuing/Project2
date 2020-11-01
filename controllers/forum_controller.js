@@ -4,23 +4,25 @@ const axios = require('axios').default;
 const Movie = require('../models/movie.js')
 require('dotenv').config()
 
-t=req.query.title
 
 // SEARCH
-router.get('/search', (req, res)=>{
-    axios.get(`http://www.omdbapi.com/?apikey=${process.env.OMDBAPIKEY}&t=godzilla`)
-    .then(function (response) {
-        // handle success
-        console.log(response);
-    })
-    .catch(function (error) {
-        // handle error
-        console.log(error);
-    })
-    .then(function () {
-        // always executed
-    });
-})
+// router.get('/search', (req, res)=>{
+//     // console.log(req.body)
+//     t=req.query.title
+//     axios.get(`http://www.omdbapi.com/?apikey=${process.env.OMDBAPIKEY}&t=${t}`)
+//     .then(function (response) {
+//         // handle success
+//         console.log(response);
+//     })
+//     .catch(function (error) {
+//         // handle error
+//         console.log(error);
+//     })
+//     .then(function () {
+//         Movie.create(response.body)
+//     });
+//     res.redirect('/')
+// })
 
 // INDEX
 router.get('/', (req, res)=>{

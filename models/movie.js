@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 const movieSchema = new mongoose.Schema({
-    name: { type : String, required:true},
-    year: { type: Date},
+    title: { type : String},
+    year: { type: String},
     poster: { type: String}
 })
 
