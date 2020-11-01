@@ -2,27 +2,34 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios').default;
 const Movie = require('../models/movie.js')
+const Post = require('../models/forum.js')
 require('dotenv').config()
 
 
 // SEARCH
-// router.get('/search', (req, res)=>{
-//     // console.log(req.body)
-//     t=req.query.title
-//     axios.get(`http://www.omdbapi.com/?apikey=${process.env.OMDBAPIKEY}&t=${t}`)
-//     .then(function (response) {
-//         // handle success
-//         console.log(response);
-//     })
-//     .catch(function (error) {
-//         // handle error
-//         console.log(error);
-//     })
-//     .then(function () {
-//         Movie.create(response.body)
-//     });
-//     res.redirect('/')
-// })
+router.get('/search', (req, res)=>{
+    // console.log(req.body)
+    t=req.query.title
+    axios.get(`http://www.omdbapi.com/?apikey=${process.env.OMDBAPIKEY}&t=${t}`)
+    .then(function (response) {
+        // handle success
+        console.log(response.data);
+        Movie.create({
+            title: response.data.Title,
+            year: response.data.Year,
+            poster: response.data.Poster
+        })
+        res.redirect('/')
+    })
+    .catch(function (error) {
+        // handle error
+        console.log(error);
+    })
+    .then(function (response) {
+        // info=response.data.Title
+        // Movie.create(info)
+    });
+})
 
 // INDEX
 router.get('/', (req, res)=>{
@@ -32,16 +39,24 @@ router.get('/', (req, res)=>{
         })
     })
 })
-// NEW
+// NEW MOVIE
 router.get('/new', (req, res)=>{
     res.render('moviechat/new.ejs')
 })
-// CREATE/POST
+// CREATE MOVIE
 router.post('/', (req, res) =>{
     Movie.create(req.body, (err, madeMovie)=>{
         res.redirect('/')
     })
 })
+
+// CREATE POST
+// router.post('/:id', (req, res)=>{
+//     Post.create(req.body, (err, madePost)=>{
+//         res.redirect('back')
+//     })
+//     Movie.findByIdAndUpdate(req.params.id,{$set:{comment: ${req.body}})
+// })
 // EDIT
 router.get('/:id/edit', (req, res)=>{
     Movie.findById(req.params.id, (err, foundMovie)=>{
@@ -63,6 +78,9 @@ router.get('/:id', (req, res)=>{
         res.render('moviechat/show.ejs', {
             movie: foundMovie
         })
+    })
+    Post.findById(req.params.id, (err, foundPost)=>{
+        
     })
 })
 

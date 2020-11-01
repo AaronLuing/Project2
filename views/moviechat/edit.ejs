@@ -8,7 +8,7 @@
 <body>
     <h1>Edit <%= movie.name %> </h1>
     <form action="/<%= movie.id %>?_method=PUT" method="POST">
-        Title: <input type="text" name="name" value="<%= movie.name %>"><br>
+        Title: <input type="text" name="title" value="<%= movie.title %>"><br>
         Year: <input type="date" name="year" value="<%= movie.year %>"><br>
         Poster: <input type="text" name="poster" value="<%= movie.poster %> "><br>
         <input type="submit" name="" value="Submit Movie Edit">
