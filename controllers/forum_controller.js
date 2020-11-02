@@ -85,21 +85,14 @@ router.get('/:id', (req, res)=>{
         })
     })
 })
-// SHOW COMMENTS
-// router.get('/:id', (req, res)=>{
-//     console.log(req.params.id)
-//     Post.findById(req.params.id, (err, foundPost)=>{
-//         res.render('moviechat/show.ejs', {
-//             post: foundPost
-//         })
-//     })
-// })
 
 
 // DELETE
 router.delete('/:id', (req, res)=>{
-    Movie.findByIdAndDelete(req.params.id, { useFindAndModify: false }, (err, data)=>{
-        res.redirect('/')
+    Movie.findByIdAndDelete(req.params.id, { useFindAndModify: false }, (err, foundMovie)=>{
+        Post.deleteMany({movie: req.params.id}, (err, foundPosts)=>{
+            res.redirect('/')
+        })
     })
 })
 

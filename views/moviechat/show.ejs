@@ -18,7 +18,8 @@
     </form><br>
     <h2>Comment Section</h2>
     <% for (i=0;i<posts.length;i++){ %>
-        <%= posts[i].subject %>
+        <h4><%= posts[i].subject %></h4>
+        <%= posts[i].body %>
     <% } %>
     <div>
         <h3>Comment on This Movie</h3>
