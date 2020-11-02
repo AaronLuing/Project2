@@ -17,14 +17,15 @@
         <input type="submit" value="DELETE MOVIE">
     </form><br>
     <h2>Comment Section</h2>
-    
+    <% for (i=0;i<posts.length;i++){ %>
+        <%= posts[i].subject %>
+    <% } %>
     <div>
         <h3>Comment on This Movie</h3>
         <form action="/<%= movie.id %>" method="POST">
             Title Your Post: <input type="text" name="subject" placeholder="required"><br>
             Your Comment: <input type="text" name="body"><br>
             <input type="text" name="tag" value="<%= movie.title %>">
-            <input type="text" name="_id" value="<%= movie.id %>">
             <input type="submit" name="" value="Add Comment">
         </form>
     </div>

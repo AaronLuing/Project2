@@ -8,9 +8,9 @@ require('dotenv').config()
 
 // SEARCH
 router.get('/search', (req, res)=>{
-    // console.log(req.body)
-    t=req.query.title
-    axios.get(`http://www.omdbapi.com/?apikey=${process.env.OMDBAPIKEY}&t=${t}`)
+    console.log(req)
+    // t=req.query.title
+    axios.get(`http://www.omdbapi.com/?apikey=${process.env.OMDBAPIKEY}&t=${req.query.title}`)
     .then(function (response) {
         // handle success
         console.log(response.data);
@@ -50,8 +50,12 @@ router.post('/', (req, res) =>{
 
 // CREATE POST
 router.post('/:id', (req, res)=>{
+    req.body.movie = req.params.id
     Post.create(req.body, (err, madePost)=>{
-        res.redirect('back')
+        if (err){
+            console.log(err)
+        } else {
+        res.redirect('back')}
     })
 })
 
@@ -73,8 +77,11 @@ router.put('/:id', (req, res)=>{
 // SHOW
 router.get('/:id', (req, res)=>{
     Movie.findById(req.params.id, (err, foundMovie)=>{
-        res.render('moviechat/show.ejs', {
-            movie: foundMovie
+        Post.find({movie: foundMovie.id}, (err, foundPosts)=>{
+            res.render('moviechat/show.ejs', {
+                movie: foundMovie,
+                posts: foundPosts
+            })
         })
     })
 })
