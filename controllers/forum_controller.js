@@ -26,8 +26,6 @@ router.get('/search', (req, res)=>{
         console.log(error);
     })
     .then(function (response) {
-        // info=response.data.Title
-        // Movie.create(info)
     });
 })
 
