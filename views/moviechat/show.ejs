@@ -23,6 +23,8 @@
         <form action="/<%= movie.id %>" method="POST">
             Title Your Post: <input type="text" name="subject" placeholder="required"><br>
             Your Comment: <input type="text" name="body"><br>
+            <input type="text" name="tag" value="<%= movie.title %>">
+            <input type="text" name="_id" value="<%= movie.id %>">
             <input type="submit" name="" value="Add Comment">
         </form>
     </div>

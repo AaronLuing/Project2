@@ -49,12 +49,12 @@ router.post('/', (req, res) =>{
 })
 
 // CREATE POST
-// router.post('/:id', (req, res)=>{
-//     Post.create(req.body, (err, madePost)=>{
-//         res.redirect('back')
-//     })
-//     Movie.findByIdAndUpdate(req.params.id,{$set:{comment: ${req.body}})
-// })
+router.post('/:id', (req, res)=>{
+    Post.create(req.body, (err, madePost)=>{
+        res.redirect('back')
+    })
+})
+
 // EDIT
 router.get('/:id/edit', (req, res)=>{
     Movie.findById(req.params.id, (err, foundMovie)=>{
@@ -77,10 +77,17 @@ router.get('/:id', (req, res)=>{
             movie: foundMovie
         })
     })
-    Post.findById(req.params.id, (err, foundPost)=>{
-        
-    })
 })
+// SHOW COMMENTS
+// router.get('/:id', (req, res)=>{
+//     console.log(req.params.id)
+//     Post.findById(req.params.id, (err, foundPost)=>{
+//         res.render('moviechat/show.ejs', {
+//             post: foundPost
+//         })
+//     })
+// })
+
 
 // DELETE
 router.delete('/:id', (req, res)=>{
