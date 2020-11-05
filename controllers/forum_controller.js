@@ -51,7 +51,9 @@ router.post('/', (req, res) =>{
 
 // CREATE POST
 router.post('/:id', (req, res)=>{
-    req.body.movie = req.params.id
+    req.body.movie = req.params.id,
+    req.body.author = req.session.currentUser.username,
+    req.body.picture = req.session.currentUser.icon,
     Post.create(req.body, (err, madePost)=>{
         if (err){
             console.log(err)

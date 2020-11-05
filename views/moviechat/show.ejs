@@ -19,6 +19,7 @@
     <h2>Comment Section</h2>
     <% for (i=0;i<posts.length;i++){ %>
         <h4><%= posts[i].subject %></h4>
+        By: <%= posts[i].author %><img src="<%= posts[i].picture %>"><br>
         <%= posts[i].body %>
         <form action="/post/<%= posts[i].id %>?_method=DELETE" method="POST">
         <input type="submit" value="DELETE COMMENT">
