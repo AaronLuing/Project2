@@ -41,7 +41,6 @@ app.use(
 
 // CONTROLLERS
 const forumController = require('./controllers/forum_controller.js');
-app.use(forumController)
 
 const userController = require('./controllers/user_controller.js');
 app.use('/user', userController)
