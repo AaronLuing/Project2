@@ -20,6 +20,9 @@
     <% for (i=0;i<posts.length;i++){ %>
         <h4><%= posts[i].subject %></h4>
         <%= posts[i].body %>
+        <form action="/post/<%= posts[i].id %>?_method=DELETE" method="POST">
+        <input type="submit" value="DELETE COMMENT">
+    </form>
     <% } %>
     <div>
         <h3>Comment on This Movie</h3>

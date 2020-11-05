@@ -99,5 +99,11 @@ router.delete('/:id', (req, res)=>{
     })
 })
 
+// DELETE COMMENT
+router.delete('/post/:id', (req, res) => {
+    Post.findByIdAndDelete(req.params.id, { useFindAndModify: false }, (err, foundMovie)=>{
+        res.redirect('back')
+    })
+})
 
 module.exports = router;
