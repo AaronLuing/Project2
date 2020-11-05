@@ -33,7 +33,8 @@ router.get('/search', (req, res)=>{
 router.get('/', (req, res)=>{
     Movie.find({}, (err, allMovies)=>{
         res.render('moviechat/index.ejs', {
-            movies: allMovies
+            movies: allMovies,
+            currentUser: req.session.currentUser
         })
     })
 })
@@ -59,35 +60,37 @@ router.post('/:id', (req, res)=>{
     })
 })
 
-// EDIT
+// EDIT MOVIE
 router.get('/:id/edit', (req, res)=>{
     Movie.findById(req.params.id, (err, foundMovie)=>{
         res.render('moviechat/edit.ejs', {
             movie:foundMovie,
+            currentUser: req.session.currentUser
         })
     })
 })
-// UPDATE
+// UPDATE MOVIE
 router.put('/:id', (req, res)=>{
     Movie.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedModel)=>{
         res.redirect('/')
     })
 })
 
-// SHOW
+// SHOW MOVIE & POSTS
 router.get('/:id', (req, res)=>{
     Movie.findById(req.params.id, (err, foundMovie)=>{
         Post.find({movie: foundMovie.id}, (err, foundPosts)=>{
             res.render('moviechat/show.ejs', {
                 movie: foundMovie,
-                posts: foundPosts
+                posts: foundPosts,
+                currentUser: req.session.currentUser
             })
         })
     })
 })
 
 
-// DELETE
+// DELETE MOVIE & POSTS
 router.delete('/:id', (req, res)=>{
     Movie.findByIdAndDelete(req.params.id, { useFindAndModify: false }, (err, foundMovie)=>{
         Post.deleteMany({movie: req.params.id}, (err, foundPosts)=>{

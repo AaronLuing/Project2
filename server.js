@@ -4,9 +4,9 @@ const methodOverride  = require('method-override');
 const mongoose = require ('mongoose');
 const app = express ();
 const db = mongoose.connection;
+const session = require('express-session');
 require('dotenv').config()
 // PORT
-// Allow use of Heroku's port or your own local port, depending on the environment
 const PORT = process.env.PORT || 3000;
 
 // DATABASE
@@ -31,14 +31,28 @@ app.use(express.json());// returns middleware that only parses JSON - may or may
 //use method override
 app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 
-
+app.use(
+    session({
+      secret: process.env.SECRET, //a random string do not copy this value or your stuff will get hacked
+      resave: false, // default more info: https://www.npmjs.com/package/express-session#resave
+      saveUninitialized: false // default  more info: https://www.npmjs.com/package/express-session#resave
+    })
+)
 
 // CONTROLLERS
 const forumController = require('./controllers/forum_controller.js');
 app.use(forumController)
 
+const userController = require('./controllers/user_controller.js');
+app.use('/user', userController)
+
+const sessionController = require('./controllers/session_controller.js');
+app.use('/session', sessionController)
+
+
 // ROUTES
 app.use('/', forumController)
+
 
 //___________________
 //Listener
