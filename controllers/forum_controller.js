@@ -16,8 +16,13 @@ router.get('/search', (req, res)=>{
         console.log(response.data);
         Movie.create({
             title: response.data.Title,
-            year: response.data.Year,
-            poster: response.data.Poster
+            release: response.data.Released,
+            poster: response.data.Poster,
+            runtime: response.data.Runtime,
+            genre: response.data.Genre,
+            director: response.data.Director,
+            plot: response.data.Plot,
+            production: response.data.Production
         })
         res.redirect('/')
     })

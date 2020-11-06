@@ -9,7 +9,12 @@
     <a href="<%= movie.id %>/edit">Edit Film</a>
     <div>
         <img src="<%= movie.poster %>"><br>
-        Release Date: <%= movie.year %> 
+        Release Date: <%= movie.release %><br>
+        Runtime: <%= movie.runtime %><br>
+        Genre: <%= movie.genre %><br>
+        Director: <%= movie.director %><br>
+        Production Studio: <%= movie.production %><br>
+        <h5>Plot: <br><%= movie.plot %></h5>
     </div><br>
     <form action="/<%= movie.id %>?_method=DELETE" method="POST">
         <input type="submit" value="DELETE MOVIE">
@@ -27,8 +32,9 @@
             </form>
             <% } %>
         </div>
-    <div>
+    <div class="commentCreate">
         <h3>Comment on This Movie</h3>
+        You must be logged in to comment!
         <form action="/<%= movie.id %>" method="POST">
             Title Your Post: <input type="text" name="subject" placeholder="required"><br>
             Your Comment: <input type="text" name="body"><br>
