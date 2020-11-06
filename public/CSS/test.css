@@ -1,0 +1,12 @@
+.badum {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.torque {
+    width: 25%;
+}
+.portrait {
+    width: 250px;
+    height: 400px
+}

@@ -5,20 +5,23 @@
 </head>
 <body>
     <%- include('../partials/nav.ejs') %>
-    <a href="/show">Click Here for Movies</a>
-    <a href="/new">Add a Movie</a>
-    <form action="/search">
-        <input type="text" name="title" placeholder="Find a movie">
-        <input type="submit" value="Search">
-    </form> 
-    <div>
+    <div class="searchbar">
+        <form action="/search">
+            <input type="text" name="title" placeholder="Find a movie">
+            <input type="submit" value="Search">
+        </form> 
+        Or <a href="/new">Add A New Movie</a>
+    </div>
+    <div class="subjectbar">
+        <h1>MOVIES</h1>
+    </div>
+    <div class="badum">
         <% for(let i=0; i<movies.length; i++){ %>
-            <div>
+            <div class="torque">
                 <h4><%= movies[i].title %> </h4>
-                <a href="/<%= movies[i].id %>"><img src="<%= movies[i].poster %>"></a>
+                <div class="portrait"><a href="/<%= movies[i].id %>"><img src="<%= movies[i].poster %>"></a></div>
             </div>
         <% } %>
     </div>
-    
 </body>
 </html>
