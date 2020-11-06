@@ -50,10 +50,10 @@ img {
     display: flex;
     flex-wrap: wrap;
 }
+.portrait {
+    height: 300px;
+    width: 300px;
+}
 .torque {
     width: 25%;
-}
-.portrait {
-    width: 250px;
-    height: 400px
 }

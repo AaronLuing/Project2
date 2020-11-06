@@ -40,7 +40,9 @@ router.get('/', (req, res)=>{
 })
 // NEW MOVIE
 router.get('/new', (req, res)=>{
-    res.render('moviechat/new.ejs')
+    res.render('moviechat/new.ejs', {
+        currentUser: req.session.currentUser
+    })
 })
 // CREATE MOVIE
 router.post('/', (req, res) =>{

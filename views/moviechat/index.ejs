@@ -16,12 +16,12 @@
         <h1>MOVIES</h1>
     </div>
     <div class="badum">
-        <% for(let i=0; i<movies.length; i++){ %>
+        <% for(let i=0;i<movies.length;i++){ %>
             <div class="torque">
-                <h4><%= movies[i].title %> </h4>
-                <div class="portrait"><a href="/<%= movies[i].id %>"><img src="<%= movies[i].poster %>"></a></div>
+                <h4><%= movies[i].title %></h4><br> 
+                <div class="portrait"><a href="/<%= movies[i].id %> "><img src="<%= movies[i].poster %> "></a></div>
             </div>
         <% } %>
-    </div>
+        </div>
 </body>
 </html>
