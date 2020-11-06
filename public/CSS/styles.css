@@ -28,6 +28,9 @@ img {
     text-decoration: none;
     padding-left: 25px;
 }
+#nava:hover {
+    color: rgb(218, 77, 77)
+}
 .navH1 {
     font-family: 'Roboto', sans-serif;
     font-size: 45px;
