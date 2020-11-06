@@ -4,20 +4,25 @@
     <%- include('../partials/head.ejs') %>
 </head>
 <body>
-    <h1>Welcome to MovieChat</h1>
-    <ul>
-        <% if (currentUser) { %>
-            <li>Welcome <%= currentUser.username %><img src="<%= currentUser.icon %>"></li>
-            <li>
-              <form action="/session?_method=DELETE" method="POST">
-                <input type="submit" value="Log Out" class="btn-small red" />
-              </form>
-            </li>
-            <% } else { %>
-            <li><a href="/user/new">Sign Up</a></li>
-            <li><a href="/session/new">Log In</a></li>
-            <% } %>
-    </ul>
+    <nav class="navigation">
+        <h1 class="navH1">MüvieChat</h1>
+            <% if (currentUser) { %>
+                <div class="login">
+                    Welcome <%= currentUser.username %>
+                    <div class="icon" id="nava">
+                        <img src="<%= currentUser.icon %>">
+                    </div>
+                        <form id="nava" action="/session?_method=DELETE" method="POST">
+                            <input type="submit" value="Log Out" class="btn-small red" />
+                        </form>
+                </div>
+                <% } else { %>
+                <div class="login">
+                    <a href="/user/new" id="nava">Sign Up</a><br>
+                <a href="/session/new" id="nava">Log In</a>
+                </div>
+        <% } %>
+    </nav>
     <a href="/show">Click Here for Movies</a>
     <a href="/new">Add a Movie</a>
     <form action="/search">

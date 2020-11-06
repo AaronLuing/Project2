@@ -1,8 +1,36 @@
-/* @font-face {
-    src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+img {
+    max-height: 100%;
+    max-width: 100%;
+}
+.navigation {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    color: ghostwhite;
+    background-color: black;
+    padding-right: 100px;
+}
+.login {
+    display: inline-flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
+.icon{
+    height: 50px;
+    width: 50px;
+}
+#nava {
+    display: inline-flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    padding-left: 25px;
+}
+.navH1 {
     font-family: 'Roboto', sans-serif;
-} */
-
-h1 {
-    color: purple;
+    font-size: 45px;
+    font-weight: 400;
+    padding-left: 10px;
 }
