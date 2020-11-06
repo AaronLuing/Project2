@@ -57,3 +57,14 @@ img {
 .torque {
     width: 25%;
 }
+/* Styling for the comment section */
+.forumPost {
+    background-color: yellow;
+    border-style: solid;
+    border-color: black;
+}
+.userName {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
